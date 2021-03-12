@@ -1,8 +1,11 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 It's a fake GED with folders and files in localStorage from :
 ```bash 
-Folders.json
+folders.json
 ```
+
+The searchBar doesn't work yet.
+
 
 ## Getting Started
 
