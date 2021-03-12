@@ -14,3 +14,37 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.navbar {
+  position: fixed!important;
+  top: 0;
+  z-index: 50;
+}
+.nav.flex-column {
+  position: fixed;
+  left: 0;
+}
+.folder-icon-color-1 {
+  color: #016d9e;
+}
+
+/* color for folders row */
+.custom-font-bold {
+  font-size: 16px;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+}
+.custom-font-light {
+  font-family: "Raleway", sans-serif;
+  font-weight: light;
+}
+.custom-font-sidebar {
+  color: #016d9e;
+  font-size: 14px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+}
+
+.dropdown-toggle::after {
+  color: rgb(0, 0, 0, 0);
+}

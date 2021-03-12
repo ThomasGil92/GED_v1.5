@@ -1,0 +1,75 @@
+[
+  {
+    "_id": 25702,
+    "name": "Folder1",
+    "author": "Thomas",
+    "lastModification": "2021-03-12",
+    "files": [
+      {
+        "_id": 87619,
+        "name": "1.pdf",
+        "lastModification": "2021-03-12",
+        "author": "Thomas"
+      },
+      {
+        "_id": 83619,
+        "name": "2.pdf",
+        "lastModification": "2021-03-12",
+        "author": "Thomas"
+      },
+      {
+        "_id": 87618,
+        "name": "3.pdf",
+        "lastModification": "2021-03-12",
+        "author": "Thomas"
+      }
+    ]
+  },
+  {
+    "_id": 62011,
+    "name": "Folder2",
+    "author": "Thomas",
+    "lastModification": "2021-03-12",
+    "files": [
+      {
+        "_id": 77619,
+        "name": "4.pdf",
+        "lastModification": "2021-03-12",
+        "author": "Thomas"
+      },
+      {
+        "_id": 87119,
+        "name": "5.pdf",
+        "lastModification": "2021-03-12",
+        "author": "Thomas"
+      },
+      {
+        "_id": 87639,
+        "name": "6.pdf",
+        "lastModification": "2021-03-12",
+        "author": "Thomas"
+      }
+    ]
+  },
+  {
+    "_id": 30288,
+    "name": "Folder3",
+    "author": "Thomas",
+    "lastModification": "2021-03-12",
+    "files": []
+  },
+  {
+    "_id": 45879,
+    "name": "Folder4",
+    "author": "Thomas",
+    "lastModification": "2021-03-12",
+    "files": []
+  },
+  {
+    "_id": 54894,
+    "name": "Folder5",
+    "author": "Thomas",
+    "lastModification": "2021-03-12",
+    "files": []
+  }
+]
