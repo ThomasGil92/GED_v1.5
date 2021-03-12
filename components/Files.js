@@ -8,7 +8,6 @@ const Files = ({ folder, setFolder, folders, setFolders, setSelectedFile }) => {
       }
     });
     folder.files = files;
-    console.log(folder);
     let foldersInLocal = [];
     folders.forEach((f) => {
       if (f._id !== folder._id) {

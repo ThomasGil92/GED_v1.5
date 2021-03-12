@@ -85,7 +85,6 @@ const Sidebar = () => {
           </div>
         </li>
       </ul>
-      {/* MODAL */}
     </>
   );
 };

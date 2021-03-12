@@ -57,12 +57,10 @@ const Modals = ({
     let foldersFromLocal = JSON.parse(localStorage.getItem("folders"));
 
     if (folderToPutTheFile !== undefined) {
-      console.log(folders, folderToPutTheFile);
       const folderToUpdate = foldersFromLocal.find(
         (folder) => folder._id === folderToPutTheFile._id,
       );
       folderToUpdate.files.push(newFile);
-      console.log(folderToUpdate);
       localStorage.setItem("folders", JSON.stringify(foldersFromLocal));
       setFolders(foldersFromLocal);
       if (setCurrentFolder) {
@@ -77,7 +75,6 @@ const Modals = ({
     currentFolder.files.forEach((fF) => {
       if (fF._id !== idFile) {
         files.push(fF);
-        console.log(fF, idFile);
       }
     });
     currentFolder.files = files;
@@ -100,10 +97,7 @@ const Modals = ({
       localStorage.setItem("folders", JSON.stringify(foldersInLocal));
       setFolders(
         foldersInLocal,
-      ); /* 
-      if (setCurrentFolder) {
-        setCurrentFolder(folderToUpdate);
-      } */
+      );
     }
   };
 
