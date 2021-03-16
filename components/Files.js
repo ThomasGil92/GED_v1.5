@@ -1,19 +1,18 @@
-import useFile from "../utils/useFile";
-import useLocalFolders from "../utils/useLocalFolders";
 
-const Files = ({currentFolder,setSelectedFile, folders, setFolders}/*{  ,setSelectedFile } */) => {
-  /*const [folders, setFolders] = useLocalFolders();
-   const [currentFolder, setCurrentFolder] = useFile(); */
+const Files = ({currentFolder,setSelectedFile, folders, setFolders}) => {
+
 
   const deleteFile = (idFile) => (e) => {
     e.preventDefault();
     let files = [];
+    /* UPDATE THE FILES LIST OF THIS FOLDER */
     currentFolder.files.forEach((fF) => {
       if (fF._id !== idFile) {
         files.push(fF);
       }
     });
     currentFolder.files = files;
+    /* UPDATE THE FOLDERS LIST AND SAVE IT IN LOCALSTORAGE */
     let foldersInLocal = [];
     folders.forEach((f) => {
       if (f._id !== currentFolder._id) {
@@ -28,6 +27,7 @@ const Files = ({currentFolder,setSelectedFile, folders, setFolders}/*{  ,setSele
     localStorage.setItem("folders", JSON.stringify(foldersInLocal));
   };
 
+  /* UPDATE THE SELECTED FILE TO MOVE OR DELETE IT IN THE MODAL COMPONENT */
   const setFile = (file) => (e) => {
     e.preventDefault();
     setSelectedFile(file);

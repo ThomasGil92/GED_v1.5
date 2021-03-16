@@ -18,12 +18,12 @@ const Modals = ({
   });
   const { name, author } = newFile;
   const [folderToPutTheFile, setFolderToPutTheFile] = useState();
-  /* const [currentFolder, setCurrentFolder] = useFile(); */
 
   const saveNewFolder = (e) => {
     e.preventDefault();
     const newFolder = document.getElementById("newFolder").value;
     const authorName = document.getElementById("authorName").value;
+
     const folder = {
       _id: Math.floor(Math.random() * 100000),
       name: newFolder,
@@ -31,8 +31,9 @@ const Modals = ({
       files: [],
       lastModification: new Date().toISOString().slice(0, 10),
     };
-    const foldersFromLocal = JSON.parse(localStorage.getItem("folders"));
 
+    const foldersFromLocal = JSON.parse(localStorage.getItem("folders"));
+    /* UPDATING THE FOLDERS LIST AND SAVE IT THE LOCALSTORAGE */
     const foldersInLocal = [];
     if (foldersFromLocal === null) {
       foldersInLocal.push(folder);
@@ -64,6 +65,7 @@ const Modals = ({
       const folderToUpdate = foldersFromLocal.find(
         (folder) => folder._id === folderToPutTheFile._id,
       );
+      /* UPDATING THE FOLDER TO PUT THE NEW FILE */
       folderToUpdate.files.push(newFile);
       localStorage.setItem("folders", JSON.stringify(foldersFromLocal));
       setFolders(foldersFromLocal);
@@ -76,13 +78,16 @@ const Modals = ({
   const moveFile = (idFile) => (e) => {
     e.preventDefault();
     let files = [];
+    /* DELETE THE FILE OF THE CURRENT FOLDER */
     currentFolder.files.forEach((fF) => {
       if (fF._id !== idFile) {
         files.push(fF);
       }
     });
     currentFolder.files = files;
+
     let foldersInLocal = [];
+
     folders.forEach((f) => {
       if (f._id !== currentFolder._id) {
         foldersInLocal.push(f);
@@ -93,6 +98,7 @@ const Modals = ({
         setFolders((folders) => [...folders, currentFolder]);
       }
     });
+    /* ADD THE FILE TO THE SELECTED FOLDER */
     if (folderToPutTheFile !== undefined) {
       const folderToUpdate = foldersInLocal.find(
         (folder) => folder._id === folderToPutTheFile._id,
@@ -105,7 +111,7 @@ const Modals = ({
 
   return (
     <>
-      {/* FOLDERS ADD */}
+      {/* FOLDERS ADD MODAL */}
       <div
         className="modal fade"
         id="modal1"
@@ -161,7 +167,7 @@ const Modals = ({
           </div>
         </div>
       </div>
-      {/* FILES ADD */}
+      {/* FILES ADD MODAL*/}
       <div
         className="modal fade"
         id="modal2"
@@ -240,7 +246,7 @@ const Modals = ({
           </div>
         </div>
       </div>
-      {/* FILES SHIFTING */}
+      {/* FILES SHIFTING MODAL*/}
       <div
         className="modal fade"
         id="modal3"

@@ -3,6 +3,8 @@ import Link from "next/link";
 const Folders = ({ folders, setFolders }) => {
   const deleteFolder = (idFolder) => (e) => {
     e.preventDefault();
+
+    /* UPDATE THE FOLDERS LIST AND SAVE IT LOCALSTORAGE */
     const newFoldersList = [];
     folders.forEach((f) => {
       if (f._id !== idFolder) {
@@ -10,6 +12,8 @@ const Folders = ({ folders, setFolders }) => {
       }
     });
     localStorage.setItem("folders", JSON.stringify(newFoldersList));
+
+    /* UPDATE THE STATE TO DISPLAY THE NEW FOLDERS LIST */
     setFolders(newFoldersList);
   };
 
