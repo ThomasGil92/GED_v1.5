@@ -1,4 +1,7 @@
 import { useState } from "react";
+import DndContainer from "./DndContainer";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const Modals = ({
   setFolders,
@@ -15,6 +18,7 @@ const Modals = ({
   });
   const { name, author } = newFile;
   const [folderToPutTheFile, setFolderToPutTheFile] = useState();
+  /* const [currentFolder, setCurrentFolder] = useFile(); */
 
   const saveNewFolder = (e) => {
     e.preventDefault();
@@ -63,7 +67,7 @@ const Modals = ({
       folderToUpdate.files.push(newFile);
       localStorage.setItem("folders", JSON.stringify(foldersFromLocal));
       setFolders(foldersFromLocal);
-      if (setCurrentFolder) {
+      if (currentFolder && currentFolder._id === folderToUpdate._id) {
         setCurrentFolder(folderToUpdate);
       }
     }
@@ -95,15 +99,13 @@ const Modals = ({
       );
       folderToUpdate.files.push(selectedFile);
       localStorage.setItem("folders", JSON.stringify(foldersInLocal));
-      setFolders(
-        foldersInLocal,
-      );
+      setFolders(foldersInLocal);
     }
   };
 
   return (
     <>
-      {/* AJOUT DE DOSSIER */}
+      {/* FOLDERS ADD */}
       <div
         className="modal fade"
         id="modal1"
@@ -159,7 +161,7 @@ const Modals = ({
           </div>
         </div>
       </div>
-      {/* AJOUT DE FICHIERS */}
+      {/* FILES ADD */}
       <div
         className="modal fade"
         id="modal2"
@@ -183,16 +185,10 @@ const Modals = ({
               </button>
             </div>
             <div className="modal-body">
-              <div className="form-group">
-                <label htmlFor="newFileNameInput">Nom du nouveau Fichier</label>
-                <input
-                  className="form-control"
-                  onChange={handleChange("name")}
-                  value={name}
-                  id="newFileNameInput"
-                  type="text"
-                  placeholder="Nom du fichier"
-                ></input>
+              <div className="form-group mb-4">
+                <DndProvider backend={HTML5Backend}>
+                  <DndContainer setNewFile={setNewFile} newFile={newFile} />
+                </DndProvider>
               </div>
               <div className="form-group">
                 <label htmlFor="newFileAuthorInput">Nom de l'auteur</label>
@@ -244,7 +240,7 @@ const Modals = ({
           </div>
         </div>
       </div>
-      {/* DEPLACER FICHIER */}
+      {/* FILES SHIFTING */}
       <div
         className="modal fade"
         id="modal3"

@@ -1,22 +1,28 @@
-const Files = ({ folder, setFolder, folders, setFolders, setSelectedFile }) => {
+import useFile from "../utils/useFile";
+import useLocalFolders from "../utils/useLocalFolders";
+
+const Files = ({currentFolder,setSelectedFile, folders, setFolders}/*{  ,setSelectedFile } */) => {
+  /*const [folders, setFolders] = useLocalFolders();
+   const [currentFolder, setCurrentFolder] = useFile(); */
+
   const deleteFile = (idFile) => (e) => {
     e.preventDefault();
     let files = [];
-    folder.files.forEach((fF) => {
+    currentFolder.files.forEach((fF) => {
       if (fF._id !== idFile) {
         files.push(fF);
       }
     });
-    folder.files = files;
+    currentFolder.files = files;
     let foldersInLocal = [];
     folders.forEach((f) => {
-      if (f._id !== folder._id) {
+      if (f._id !== currentFolder._id) {
         foldersInLocal.push(f);
         setFolders((folders) => [...folders, f]);
       }
-      if (f._id === folder._id) {
-        foldersInLocal.push(folder);
-        setFolders((folders) => [...folders, folder]);
+      if (f._id === currentFolder._id) {
+        foldersInLocal.push(currentFolder);
+        setFolders((folders) => [...folders, currentFolder]);
       }
     });
     localStorage.setItem("folders", JSON.stringify(foldersInLocal));
@@ -36,9 +42,9 @@ const Files = ({ folder, setFolder, folders, setFolders, setSelectedFile }) => {
         <div className="col-2 font-weight-light">Créateur</div>
         <div className="col-2 font-weight-light">Action</div>
       </div>
-      {folder &&
-        folder.files &&
-        folder.files.map((f, i) => {
+      {currentFolder &&
+        currentFolder.files &&
+        currentFolder.files.map((f, i) => {
           return (
             <div
               key={i}
@@ -46,7 +52,6 @@ const Files = ({ folder, setFolder, folders, setFolders, setSelectedFile }) => {
             >
               <div className="col-6 pl-0 d-flex">
                 {" "}
-               
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
